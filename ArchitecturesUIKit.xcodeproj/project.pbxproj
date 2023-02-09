@@ -7,25 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D2CB29C299277D9009CA52E /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB29B299277D9009CA52E /* UITextField+.swift */; };
+		8D2CB2A2299285A9009CA52E /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2A1299285A9009CA52E /* LocalFileManager.swift */; };
+		8D2CB2A429928601009CA52E /* CredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2A329928601009CA52E /* CredentialService.swift */; };
+		8D2CB2A62992861B009CA52E /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2A52992861B009CA52E /* Credentials.swift */; };
+		8D2CB2A829928669009CA52E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2A729928669009CA52E /* AppState.swift */; };
+		8D2CB2AB2992873C009CA52E /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2AA2992873C009CA52E /* RegisterView.swift */; };
+		8D2CB2AD29928748009CA52E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2AC29928748009CA52E /* RegisterViewController.swift */; };
+		8D2CB2B0299289EA009CA52E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2AF299289EA009CA52E /* HomeView.swift */; };
+		8D2CB2B2299289F3009CA52E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2B1299289F3009CA52E /* HomeViewController.swift */; };
+		8D2CB2B42992D0CB009CA52E /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2B32992D0CB009CA52E /* UIViewController+.swift */; };
+		8D2CB2B62992DD0A009CA52E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2B52992DD0A009CA52E /* UserDefaultsManager.swift */; };
+		8D2CB2B92992EBB4009CA52E /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2B82992EBB4009CA52E /* HomeTableViewCell.swift */; };
+		8D2CB2BF2992F1C9009CA52E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2BE2992F1C9009CA52E /* Person.swift */; };
+		8D2CB2C12992F3D9009CA52E /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2C02992F3D9009CA52E /* ImageService.swift */; };
+		8D2CB2C32992FB30009CA52E /* PersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CB2C22992FB30009CA52E /* PersonService.swift */; };
 		8D6475432991C44B00B74EAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475422991C44B00B74EAF /* AppDelegate.swift */; };
 		8D6475452991C44B00B74EAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475442991C44B00B74EAF /* SceneDelegate.swift */; };
-		8D6475472991C44B00B74EAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475462991C44B00B74EAF /* ViewController.swift */; };
+		8D6475472991C44B00B74EAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475462991C44B00B74EAF /* LoginViewController.swift */; };
 		8D64754C2991C44D00B74EAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D64754B2991C44D00B74EAF /* Assets.xcassets */; };
 		8D64754F2991C44D00B74EAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D64754D2991C44D00B74EAF /* LaunchScreen.storyboard */; };
 		8D6475582991C51700B74EAF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8D6475572991C51700B74EAF /* FirebaseAuth */; };
 		8D64755A2991C51700B74EAF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8D6475592991C51700B74EAF /* FirebaseFirestore */; };
 		8D64755C2991C98C00B74EAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */; };
+		8D6475622991D48400B74EAF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475612991D48400B74EAF /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D2CB29B299277D9009CA52E /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		8D2CB2A1299285A9009CA52E /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		8D2CB2A329928601009CA52E /* CredentialService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialService.swift; sourceTree = "<group>"; };
+		8D2CB2A52992861B009CA52E /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		8D2CB2A729928669009CA52E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		8D2CB2AA2992873C009CA52E /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		8D2CB2AC29928748009CA52E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8D2CB2AF299289EA009CA52E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8D2CB2B1299289F3009CA52E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8D2CB2B32992D0CB009CA52E /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		8D2CB2B52992DD0A009CA52E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		8D2CB2B82992EBB4009CA52E /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		8D2CB2BE2992F1C9009CA52E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		8D2CB2C02992F3D9009CA52E /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		8D2CB2C22992FB30009CA52E /* PersonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
 		8D64753F2991C44B00B74EAF /* ArchitecturesUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitecturesUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D6475422991C44B00B74EAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D6475442991C44B00B74EAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8D6475462991C44B00B74EAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8D6475462991C44B00B74EAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8D64754B2991C44D00B74EAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D64754E2991C44D00B74EAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D6475502991C44D00B74EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8D6475612991D48400B74EAF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +73,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D2CB29A299277C5009CA52E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CB29B299277D9009CA52E /* UITextField+.swift */,
+				8D2CB2B32992D0CB009CA52E /* UIViewController+.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		8D2CB29D2992853B009CA52E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CB2A52992861B009CA52E /* Credentials.swift */,
+				8D2CB2BE2992F1C9009CA52E /* Person.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		8D2CB29E29928543009CA52E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CB2A1299285A9009CA52E /* LocalFileManager.swift */,
+				8D2CB2B52992DD0A009CA52E /* UserDefaultsManager.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		8D2CB29F29928549009CA52E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CB2A329928601009CA52E /* CredentialService.swift */,
+				8D2CB2C22992FB30009CA52E /* PersonService.swift */,
+				8D2CB2C02992F3D9009CA52E /* ImageService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		8D2CB2A02992855E009CA52E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8D64755E2991D42200B74EAF /* Login */,
+				8D2CB2A929928729009CA52E /* Register */,
+				8D2CB2AE299289DB009CA52E /* Home */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		8D2CB2A929928729009CA52E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CB2AC29928748009CA52E /* RegisterViewController.swift */,
+				8D2CB2AA2992873C009CA52E /* RegisterView.swift */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		8D2CB2AE299289DB009CA52E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CB2B72992EB9C009CA52E /* Cell */,
+				8D2CB2B1299289F3009CA52E /* HomeViewController.swift */,
+				8D2CB2AF299289EA009CA52E /* HomeView.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		8D2CB2B72992EB9C009CA52E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CB2B82992EBB4009CA52E /* HomeTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		8D6475362991C44B00B74EAF = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +166,37 @@
 		8D6475412991C44B00B74EAF /* ArchitecturesUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				8D64755D2991D3FA00B74EAF /* Files */,
 				8D6475422991C44B00B74EAF /* AppDelegate.swift */,
 				8D6475442991C44B00B74EAF /* SceneDelegate.swift */,
-				8D6475462991C44B00B74EAF /* ViewController.swift */,
+				8D2CB2A729928669009CA52E /* AppState.swift */,
+				8D2CB29E29928543009CA52E /* Utilities */,
+				8D2CB29F29928549009CA52E /* Services */,
+				8D2CB29D2992853B009CA52E /* Models */,
+				8D2CB29A299277C5009CA52E /* Extensions */,
+				8D2CB2A02992855E009CA52E /* Core */,
+			);
+			path = ArchitecturesUIKit;
+			sourceTree = "<group>";
+		};
+		8D64755D2991D3FA00B74EAF /* Files */ = {
+			isa = PBXGroup;
+			children = (
 				8D64754B2991C44D00B74EAF /* Assets.xcassets */,
 				8D64754D2991C44D00B74EAF /* LaunchScreen.storyboard */,
 				8D6475502991C44D00B74EAF /* Info.plist */,
 				8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */,
 			);
-			path = ArchitecturesUIKit;
+			name = Files;
+			sourceTree = "<group>";
+		};
+		8D64755E2991D42200B74EAF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8D6475462991C44B00B74EAF /* LoginViewController.swift */,
+				8D6475612991D48400B74EAF /* LoginView.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +277,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D6475472991C44B00B74EAF /* ViewController.swift in Sources */,
+				8D2CB2B42992D0CB009CA52E /* UIViewController+.swift in Sources */,
+				8D6475472991C44B00B74EAF /* LoginViewController.swift in Sources */,
+				8D2CB2AD29928748009CA52E /* RegisterViewController.swift in Sources */,
+				8D2CB2AB2992873C009CA52E /* RegisterView.swift in Sources */,
+				8D2CB2C12992F3D9009CA52E /* ImageService.swift in Sources */,
+				8D2CB2A429928601009CA52E /* CredentialService.swift in Sources */,
+				8D2CB2BF2992F1C9009CA52E /* Person.swift in Sources */,
+				8D2CB2A62992861B009CA52E /* Credentials.swift in Sources */,
+				8D2CB2A829928669009CA52E /* AppState.swift in Sources */,
+				8D2CB29C299277D9009CA52E /* UITextField+.swift in Sources */,
 				8D6475432991C44B00B74EAF /* AppDelegate.swift in Sources */,
+				8D6475622991D48400B74EAF /* LoginView.swift in Sources */,
+				8D2CB2B0299289EA009CA52E /* HomeView.swift in Sources */,
+				8D2CB2C32992FB30009CA52E /* PersonService.swift in Sources */,
+				8D2CB2B62992DD0A009CA52E /* UserDefaultsManager.swift in Sources */,
 				8D6475452991C44B00B74EAF /* SceneDelegate.swift in Sources */,
+				8D2CB2B2299289F3009CA52E /* HomeViewController.swift in Sources */,
+				8D2CB2B92992EBB4009CA52E /* HomeTableViewCell.swift in Sources */,
+				8D2CB2A2299285A9009CA52E /* LocalFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
