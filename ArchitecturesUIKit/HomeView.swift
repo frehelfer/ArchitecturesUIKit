@@ -14,11 +14,12 @@ class HomeView: UIView {
     // MARK: - Properties
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .systemGray5
+        tableView.selectionFollowsFocus = false
         return tableView
     }()
     
@@ -51,8 +52,12 @@ class HomeView: UIView {
     
     // MARK: - Actions
     
-    public func configTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    public func configTableViewDelegate(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
+    }
+    
+    public func reloadTableView() {
+        self.tableView.reloadData()
     }
 }

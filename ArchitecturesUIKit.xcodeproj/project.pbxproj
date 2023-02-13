@@ -31,6 +31,8 @@
 		8D64755A2991C51700B74EAF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8D6475592991C51700B74EAF /* FirebaseFirestore */; };
 		8D64755C2991C98C00B74EAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */; };
 		8D6475622991D48400B74EAF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475612991D48400B74EAF /* LoginView.swift */; };
+		8DF1192D29959296001CF74E /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1192C29959296001CF74E /* PersonViewController.swift */; };
+		8DF1192F299592A1001CF74E /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1192E299592A1001CF74E /* PersonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		8D6475502991C44D00B74EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D6475612991D48400B74EAF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8DF1192C29959296001CF74E /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		8DF1192E299592A1001CF74E /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +136,10 @@
 		8D2CB2AE299289DB009CA52E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				8D2CB2B72992EB9C009CA52E /* Cell */,
 				8D2CB2B1299289F3009CA52E /* HomeViewController.swift */,
 				8D2CB2AF299289EA009CA52E /* HomeView.swift */,
+				8D2CB2B72992EB9C009CA52E /* Cell */,
+				8DF1192B2995925A001CF74E /* PersonDetail */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -197,6 +202,15 @@
 				8D6475612991D48400B74EAF /* LoginView.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		8DF1192B2995925A001CF74E /* PersonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8DF1192C29959296001CF74E /* PersonViewController.swift */,
+				8DF1192E299592A1001CF74E /* PersonView.swift */,
+			);
+			name = PersonDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +297,7 @@
 				8D2CB2AB2992873C009CA52E /* RegisterView.swift in Sources */,
 				8D2CB2C12992F3D9009CA52E /* ImageService.swift in Sources */,
 				8D2CB2A429928601009CA52E /* CredentialService.swift in Sources */,
+				8DF1192F299592A1001CF74E /* PersonView.swift in Sources */,
 				8D2CB2BF2992F1C9009CA52E /* Person.swift in Sources */,
 				8D2CB2A62992861B009CA52E /* Credentials.swift in Sources */,
 				8D2CB2A829928669009CA52E /* AppState.swift in Sources */,
@@ -292,6 +307,7 @@
 				8D2CB2B0299289EA009CA52E /* HomeView.swift in Sources */,
 				8D2CB2C32992FB30009CA52E /* PersonService.swift in Sources */,
 				8D2CB2B62992DD0A009CA52E /* UserDefaultsManager.swift in Sources */,
+				8DF1192D29959296001CF74E /* PersonViewController.swift in Sources */,
 				8D6475452991C44B00B74EAF /* SceneDelegate.swift in Sources */,
 				8D2CB2B2299289F3009CA52E /* HomeViewController.swift in Sources */,
 				8D2CB2B92992EBB4009CA52E /* HomeTableViewCell.swift in Sources */,

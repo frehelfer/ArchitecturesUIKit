@@ -13,6 +13,10 @@ class RegisterView: UIView {
     var onRegisterTap: ((_ user: Credentials) -> Void)?
     
     // MARK: - Properties
+    
+    
+    var isSecure = true
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -90,8 +94,9 @@ class RegisterView: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter your password"
-        textField.isSecureTextEntry = true
-        textField.keyboardType = .emailAddress
+        textField.returnKeyType = .next
+        textField.isSecureTextEntry = isSecure
+        textField.keyboardType = .default
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
@@ -109,8 +114,9 @@ class RegisterView: UIView {
     private lazy var secureButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "eye"), for: .normal)
+        button.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
         button.tintColor = .systemBlue
+        button.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
         return button
     }()
     
@@ -127,7 +133,7 @@ class RegisterView: UIView {
     private lazy var confirmPasswordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Password"
+        label.text = "Password Confirmation"
         label.textColor = .label
         return label
     }()
@@ -135,9 +141,10 @@ class RegisterView: UIView {
     private lazy var confirmPasswordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Enter your password"
-        textField.isSecureTextEntry = true
-        textField.keyboardType = .emailAddress
+        textField.placeholder = "Enter your password again"
+        textField.returnKeyType = .go
+        textField.isSecureTextEntry = isSecure
+        textField.keyboardType = .default
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
@@ -152,11 +159,12 @@ class RegisterView: UIView {
         return textField
     }()
     
-    private lazy var confirmPasswordSecureButton: UIButton = {
+    private lazy var confirmationSecureButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "eye"), for: .normal)
+        button.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
         button.tintColor = .systemBlue
+        button.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
         return button
     }()
     
@@ -199,14 +207,14 @@ class RegisterView: UIView {
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordTextField)
         
-        passwordTextField.addSubview(secureButton)
+        addSubview(secureButton)
         
         // confirmPassword stack
         stackView.addArrangedSubview(confirmPasswordStackView)
         confirmPasswordStackView.addArrangedSubview(confirmPasswordLabel)
         confirmPasswordStackView.addArrangedSubview(confirmPasswordTextField)
         
-        confirmPasswordTextField.addSubview(confirmPasswordSecureButton)
+        addSubview(confirmationSecureButton)
         
         // button
         addSubview(registerButton)
@@ -250,8 +258,8 @@ class RegisterView: UIView {
             confirmPasswordTextField.trailingAnchor.constraint(equalTo: confirmPasswordStackView.trailingAnchor),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 42),
             
-            confirmPasswordSecureButton.centerYAnchor.constraint(equalTo: confirmPasswordTextField.centerYAnchor),
-            confirmPasswordSecureButton.trailingAnchor.constraint(equalTo: confirmPasswordTextField.trailingAnchor, constant: -12),
+            confirmationSecureButton.centerYAnchor.constraint(equalTo: confirmPasswordTextField.centerYAnchor),
+            confirmationSecureButton.trailingAnchor.constraint(equalTo: confirmPasswordTextField.trailingAnchor, constant: -12),
             
             // registerButton
             registerButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -263,18 +271,43 @@ class RegisterView: UIView {
     
     // MARK: - Actions
     @objc
+    private func showPassword() {
+        
+        if passwordTextField.isSecureTextEntry || confirmPasswordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry.toggle()
+            confirmPasswordTextField.isSecureTextEntry.toggle()
+            secureButton.setImage(UIImage(systemName: "eye"), for: .normal)
+            confirmationSecureButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        } else {
+            passwordTextField.isSecureTextEntry.toggle()
+            confirmPasswordTextField.isSecureTextEntry.toggle()
+            secureButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+            confirmationSecureButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        }
+    }
+    
+    @objc
     private func registerButtonTap() {
         guard
             let email = emailTextField.text,
             let password = passwordTextField.text,
-            !email.isEmpty,
-            !password.isEmpty,
-            password == confirmPasswordTextField.text else {
-            // Show error message
-            return
-        }
+            let confirmPassword = confirmPasswordTextField.text
+        else { return }
         
-        self.onRegisterTap?(Credentials(email: email, password: password))
+        self.onRegisterTap?(Credentials(email: email, password: password, confirmPassword: confirmPassword))
+    }
+    
+    // MARK: - Public Actions
+    
+    public func cleanTextFields(_ loginSuccess: Bool = false) {
+        if loginSuccess {
+            emailTextField.text = ""
+            passwordTextField.text = ""
+            confirmPasswordTextField.text = ""
+        } else {
+            passwordTextField.text = ""
+            confirmPasswordTextField.text = ""
+        }
     }
 }
 

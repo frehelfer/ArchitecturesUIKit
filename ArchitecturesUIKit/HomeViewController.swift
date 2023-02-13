@@ -23,24 +23,9 @@ class HomeViewController: UIViewController {
     
     private var allPersons: [Person] = []
     
-    private lazy var personService: PersonService = {
-        let service = PersonService()
-        
-        service.onReceivedPersons = { [weak self] returnedPersons in
-            self?.allPersons = returnedPersons
-            self?.homeView.tableView.reloadData()
-        }
-        
-        return service
-    }()
-    
-    private lazy var homeView: HomeView = {
-        let view = HomeView()
-        
-        
-        
-        return view
-    }()
+    private var personService = PersonService()
+    private var homeView = HomeView()
+
     
     // MARK: - LifeCycle
     
@@ -53,11 +38,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         layout()
         self.hideKeyboardWhenTappedAround()
-        self.homeView.configTableView(delegate: self, dataSource: self)
+        self.homeView.configTableViewDelegate(delegate: self, dataSource: self)
         
         Task {
             do {
-                try await personService.fetchPersons()
+                allPersons = try await personService.fetchPersons()
+                homeView.reloadTableView()
             } catch {
                 print(error.localizedDescription)
             }
@@ -72,6 +58,7 @@ class HomeViewController: UIViewController {
     private func layout() {
         title = "HomeView"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(logOutTapped))
+        
     }
     
     // MARK: - Actions
@@ -95,5 +82,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PersonViewController(person: allPersons[indexPath.row])
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

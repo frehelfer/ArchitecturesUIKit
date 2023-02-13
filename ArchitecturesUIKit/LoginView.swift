@@ -57,7 +57,7 @@ class LoginView: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter your email"
-        textField.text = "a"
+        textField.text = "test@test.com"
         textField.returnKeyType = .next
         textField.keyboardType = .emailAddress
         textField.autocorrectionType = .no
@@ -95,10 +95,10 @@ class LoginView: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter your password"
-        textField.text = "a"
+        textField.text = "a12345"
         textField.returnKeyType = .go
         textField.isSecureTextEntry = isSecure
-        textField.keyboardType = .emailAddress
+        textField.keyboardType = .default
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
@@ -237,18 +237,14 @@ class LoginView: UIView {
     private func loginButtonTap() {
         guard
             let email = emailTextField.text,
-            let password = passwordTextField.text,
-            !email.isEmpty,
-            !password.isEmpty else {
-            //Show error message
-            return
-        }
+            let password = passwordTextField.text else { return }
         
         self.onLoginTap?(Credentials(email: email, password: password))
     }
     
     @objc
     private func registerButtonTap() {
+        cleanTextFields(true)
         self.onRegisterTap?()
     }
     
@@ -261,6 +257,17 @@ class LoginView: UIView {
         } else {
             passwordTextField.isSecureTextEntry.toggle()
             secureButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        }
+    }
+    
+    // MARK: - Public Actions
+    
+    public func cleanTextFields(_ loginSuccess: Bool = false) {
+        if loginSuccess {
+            emailTextField.text = ""
+            passwordTextField.text = ""
+        } else {
+            passwordTextField.text = ""
         }
     }
 }

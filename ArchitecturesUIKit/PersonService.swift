@@ -9,19 +9,14 @@ import Foundation
 
 @MainActor
 class PersonService {
-    var onReceivedPersons: ((_ allPersons: [Person]) -> Void)?
     
-    init() {
-        
-    }
-    
-    func fetchPersons() async throws {
-        guard let url = URL(string: "https://hws.dev/designers.json") else { return }
+    func fetchPersons() async throws -> [Person] {
+        guard let url = URL(string: "https://hws.dev/designers.json") else { return [] }
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let decoded = try JSONDecoder().decode([Person].self, from: data)
-            self.onReceivedPersons?(decoded)
+            let allPersons = try JSONDecoder().decode([Person].self, from: data)
+            return allPersons
         } catch {
             throw error
         }

@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
     
     weak var delegate: LoginViewControllerDelegate?
     
+    // MARK: - Closures
+
+    
     // MARK: - Properties
     private lazy var registerViewController: RegisterViewController = {
         let vc = RegisterViewController()
@@ -30,7 +33,7 @@ class LoginViewController: UIViewController {
         let view = LoginView()
         
         view.onLoginTap = { [weak self] user in
-            self?.delegate?.isAuth()
+            self?.login(user: user)
         }
         
         view.onRegisterTap = { [weak self] in
@@ -54,5 +57,27 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Actions
-
+    
+    private func login(user: Credentials) {
+        if user.password == "" || user.email == "" {
+            presentAlert(withTitle: "Alert", message: "TextField is empty")
+        } else if !user.email.contains("@") {
+            presentAlert(withTitle: "Alert", message: "Email invalid. Try again!")
+        }
+        
+        
+        CredentialService.shared.signIn(user: user) { [weak self] result in
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self?.delegate?.isAuth()
+                    self?.loginView.cleanTextFields(true)
+                case .failure(let error):
+                    self?.presentAlert(withTitle: "Error", message: error.localizedDescription)
+                    self?.loginView.cleanTextFields()
+                }
+            }
+        }
+    }
 }
