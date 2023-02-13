@@ -13,6 +13,8 @@ protocol LoginViewControllerDelegate: AnyObject {
 
 class LoginViewController: UIViewController {
     
+    let presenter = LoginPresenter()
+    
     weak var delegate: LoginViewControllerDelegate?
     
     // MARK: - Closures
@@ -33,7 +35,7 @@ class LoginViewController: UIViewController {
         let view = LoginView()
         
         view.onLoginTap = { [weak self] user in
-            self?.login(user: user)
+            self?.presenter.login(user: user)
         }
         
         view.onRegisterTap = { [weak self] in
@@ -54,30 +56,21 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        presenter.delegate = self
+    }
+}
+
+extension LoginViewController: LoginPresenterDelegate {
+    func showMessage(title: String, message: String) {
+        presentAlert(withTitle: title, message: message)
     }
     
-    // MARK: - Actions
+    func cleanTextFields(_ success: Bool) {
+        loginView.cleanTextFields(success)
+    }
     
-    private func login(user: Credentials) {
-        if user.password == "" || user.email == "" {
-            presentAlert(withTitle: "Alert", message: "TextField is empty")
-        } else if !user.email.contains("@") {
-            presentAlert(withTitle: "Alert", message: "Email invalid. Try again!")
-        }
-        
-        
-        CredentialService.shared.signIn(user: user) { [weak self] result in
-            
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    self?.delegate?.isAuth()
-                    self?.loginView.cleanTextFields(true)
-                case .failure(let error):
-                    self?.presentAlert(withTitle: "Error", message: error.localizedDescription)
-                    self?.loginView.cleanTextFields()
-                }
-            }
-        }
+    func goHome() {
+        delegate?.isAuth()
     }
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 class PersonService {
     
     func fetchPersons() async throws -> [Person] {

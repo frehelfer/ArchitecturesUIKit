@@ -8,6 +8,8 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
+    
+    let presenter = RegisterPresenter()
 
     // MARK: - Closures
     
@@ -19,7 +21,7 @@ class RegisterViewController: UIViewController {
         let view = RegisterView()
         
         view.onRegisterTap = { [weak self] user in
-            self?.register(user: user)
+            self?.presenter.register(user: user)
         }
         
         return view
@@ -34,33 +36,21 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        presenter.delegate = self
+    }
+}
+
+extension RegisterViewController: RegisterPresenterDelegate {
+    func showMessage(title: String, message: String) {
+        presentAlert(withTitle: title, message: message)
     }
     
-    // MARK: - Actions
+    func cleanTextFields(_ success: Bool) {
+        registerView.cleanTextFields(success)
+    }
     
-    private func register(user: Credentials) {
-        if user.password == "" || user.confirmPassword == "" || user.email == "" {
-            presentAlert(withTitle: "Alert", message: "TextField is empty")
-            
-        } else if !user.email.contains("@") {
-            presentAlert(withTitle: "Alert", message: "Email invalid. Try again!")
-            
-        } else if user.password != user.confirmPassword {
-            presentAlert(withTitle: "Alert", message: "Password are different. Try again!")
-        }
-        
-        CredentialService.shared.createUser(user: user) { [weak self] result in
-            
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    self?.registerTap?()
-                    self?.registerView.cleanTextFields(true)
-                case .failure(let error):
-                    self?.presentAlert(withTitle: "Error", message: error.localizedDescription)
-                    self?.registerView.cleanTextFields()
-                }
-            }
-        }
+    func goHome() {
+        registerTap?()
     }
 }

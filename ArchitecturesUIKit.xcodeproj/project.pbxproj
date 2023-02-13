@@ -31,6 +31,9 @@
 		8D64755A2991C51700B74EAF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8D6475592991C51700B74EAF /* FirebaseFirestore */; };
 		8D64755C2991C98C00B74EAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */; };
 		8D6475622991D48400B74EAF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475612991D48400B74EAF /* LoginView.swift */; };
+		8D87566E299A6E72005A390A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87566D299A6E72005A390A /* LoginPresenter.swift */; };
+		8D875670299A740C005A390A /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87566F299A740C005A390A /* RegisterPresenter.swift */; };
+		8D875672299A7658005A390A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D875671299A7658005A390A /* HomePresenter.swift */; };
 		8DF1192D29959296001CF74E /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1192C29959296001CF74E /* PersonViewController.swift */; };
 		8DF1192F299592A1001CF74E /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1192E299592A1001CF74E /* PersonView.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		8D6475502991C44D00B74EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D6475612991D48400B74EAF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8D87566D299A6E72005A390A /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		8D87566F299A740C005A390A /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		8D875671299A7658005A390A /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		8DF1192C29959296001CF74E /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		8DF1192E299592A1001CF74E /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +135,7 @@
 			children = (
 				8D2CB2AC29928748009CA52E /* RegisterViewController.swift */,
 				8D2CB2AA2992873C009CA52E /* RegisterView.swift */,
+				8D87566F299A740C005A390A /* RegisterPresenter.swift */,
 			);
 			name = Register;
 			sourceTree = "<group>";
@@ -138,6 +145,7 @@
 			children = (
 				8D2CB2B1299289F3009CA52E /* HomeViewController.swift */,
 				8D2CB2AF299289EA009CA52E /* HomeView.swift */,
+				8D875671299A7658005A390A /* HomePresenter.swift */,
 				8D2CB2B72992EB9C009CA52E /* Cell */,
 				8DF1192B2995925A001CF74E /* PersonDetail */,
 			);
@@ -200,6 +208,7 @@
 			children = (
 				8D6475462991C44B00B74EAF /* LoginViewController.swift */,
 				8D6475612991D48400B74EAF /* LoginView.swift */,
+				8D87566D299A6E72005A390A /* LoginPresenter.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 				8D6475472991C44B00B74EAF /* LoginViewController.swift in Sources */,
 				8D2CB2AD29928748009CA52E /* RegisterViewController.swift in Sources */,
 				8D2CB2AB2992873C009CA52E /* RegisterView.swift in Sources */,
+				8D87566E299A6E72005A390A /* LoginPresenter.swift in Sources */,
 				8D2CB2C12992F3D9009CA52E /* ImageService.swift in Sources */,
 				8D2CB2A429928601009CA52E /* CredentialService.swift in Sources */,
 				8DF1192F299592A1001CF74E /* PersonView.swift in Sources */,
@@ -305,8 +315,10 @@
 				8D6475432991C44B00B74EAF /* AppDelegate.swift in Sources */,
 				8D6475622991D48400B74EAF /* LoginView.swift in Sources */,
 				8D2CB2B0299289EA009CA52E /* HomeView.swift in Sources */,
+				8D875672299A7658005A390A /* HomePresenter.swift in Sources */,
 				8D2CB2C32992FB30009CA52E /* PersonService.swift in Sources */,
 				8D2CB2B62992DD0A009CA52E /* UserDefaultsManager.swift in Sources */,
+				8D875670299A740C005A390A /* RegisterPresenter.swift in Sources */,
 				8DF1192D29959296001CF74E /* PersonViewController.swift in Sources */,
 				8D6475452991C44B00B74EAF /* SceneDelegate.swift in Sources */,
 				8D2CB2B2299289F3009CA52E /* HomeViewController.swift in Sources */,

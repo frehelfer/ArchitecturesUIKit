@@ -14,16 +14,13 @@ protocol HomeViewControllerDelegate: AnyObject {
 
 class HomeViewController: UIViewController {
     
+    let presenter = HomePresenter()
+    
     weak var delegate: HomeViewControllerDelegate?
-    
-    // MARK: - Closures
-    
     
     // MARK: - Properties
     
     private var allPersons: [Person] = []
-    
-    private var personService = PersonService()
     private var homeView = HomeView()
 
     
@@ -39,14 +36,10 @@ class HomeViewController: UIViewController {
         layout()
         self.hideKeyboardWhenTappedAround()
         self.homeView.configTableViewDelegate(delegate: self, dataSource: self)
+        self.presenter.delegate = self
         
         Task {
-            do {
-                allPersons = try await personService.fetchPersons()
-                homeView.reloadTableView()
-            } catch {
-                print(error.localizedDescription)
-            }
+            await presenter.fetchPersons()
         }
     }
     
@@ -61,10 +54,8 @@ class HomeViewController: UIViewController {
         
     }
     
-    // MARK: - Actions
-
     @objc
-    private func logOutTapped() {
+    func logOutTapped() {
         delegate?.logOut()
     }
 }
@@ -85,7 +76,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PersonViewController(person: allPersons[indexPath.row])
+        presenter.didTap(person: indexPath)
+    }
+}
+
+extension HomeViewController: HomePresenterDelegate {
+    func presentPersons(allPersons: [Person]) {
+        self.allPersons = allPersons
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.homeView.reloadTableView()
+        }
+    }
+    
+    func showMessage(title: String, message: String) {
+        presentAlert(withTitle: title, message: message)
+    }
+    
+    func presentPersonDetail(person: IndexPath) {
+        let vc = PersonViewController(person: allPersons[person.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
