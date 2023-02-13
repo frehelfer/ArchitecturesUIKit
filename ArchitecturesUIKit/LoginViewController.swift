@@ -7,47 +7,30 @@
 
 import UIKit
 
-protocol LoginViewControllerDelegate: AnyObject {
-    func isAuth()
-}
-
 class LoginViewController: UIViewController {
     
-    let presenter = LoginPresenter()
-    
-    weak var delegate: LoginViewControllerDelegate?
+    private let vm = CredentialsViewModel()
     
     // MARK: - Closures
-
+    var onLoginSuccess: (() -> Void)?
+    var onRegisterTap: (() -> Void)?
     
     // MARK: - Properties
-    private lazy var registerViewController: RegisterViewController = {
-        let vc = RegisterViewController()
-        
-        vc.registerTap = { [weak self] in
-            self?.delegate?.isAuth()
-        }
-        
-        return vc
-    }()
-    
     private lazy var loginView: LoginView = {
         let view = LoginView()
         
         view.onLoginTap = { [weak self] user in
-            self?.presenter.login(user: user)
+            self?.login(user: user)
         }
         
         view.onRegisterTap = { [weak self] in
-            guard let vc = self?.registerViewController else { return }
-            self?.navigationController?.pushViewController(vc, animated: true)
+            self?.onRegisterTap?()
         }
         
         return view
     }()
     
-    // MARK: - Inits
-    
+    // MARK: - LifeCycle
     override func loadView() {
         super.loadView()
         view = loginView
@@ -56,21 +39,19 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        
-        presenter.delegate = self
-    }
-}
-
-extension LoginViewController: LoginPresenterDelegate {
-    func showMessage(title: String, message: String) {
-        presentAlert(withTitle: title, message: message)
     }
     
-    func cleanTextFields(_ success: Bool) {
-        loginView.cleanTextFields(success)
-    }
-    
-    func goHome() {
-        delegate?.isAuth()
+    // MARK: - Actions
+    private func login(user: Credentials) {
+        vm.login(user: user) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.onLoginSuccess?()
+                self?.loginView.cleanTextFields(true)
+            case .failure(let error):
+                self?.presentAlert(withTitle: "Error", message: error.localizedDescription)
+                self?.loginView.cleanTextFields()
+            }
+        }
     }
 }

@@ -31,9 +31,12 @@
 		8D64755A2991C51700B74EAF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8D6475592991C51700B74EAF /* FirebaseFirestore */; };
 		8D64755C2991C98C00B74EAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */; };
 		8D6475622991D48400B74EAF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6475612991D48400B74EAF /* LoginView.swift */; };
-		8D87566E299A6E72005A390A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87566D299A6E72005A390A /* LoginPresenter.swift */; };
-		8D875670299A740C005A390A /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87566F299A740C005A390A /* RegisterPresenter.swift */; };
-		8D875672299A7658005A390A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D875671299A7658005A390A /* HomePresenter.swift */; };
+		8DC97AA9299A922D000C0154 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97AA8299A922D000C0154 /* Coordinator.swift */; };
+		8DC97AAB299A942D000C0154 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97AAA299A942D000C0154 /* LoginCoordinator.swift */; };
+		8DC97AAD299AD51A000C0154 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97AAC299AD51A000C0154 /* RegisterCoordinator.swift */; };
+		8DC97AAF299AD522000C0154 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97AAE299AD522000C0154 /* HomeCoordinator.swift */; };
+		8DC97AB2299AD760000C0154 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97AB1299AD760000C0154 /* CredentialsViewModel.swift */; };
+		8DC97AB4299AE0A3000C0154 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97AB3299AE0A3000C0154 /* PersonViewModel.swift */; };
 		8DF1192D29959296001CF74E /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1192C29959296001CF74E /* PersonViewController.swift */; };
 		8DF1192F299592A1001CF74E /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1192E299592A1001CF74E /* PersonView.swift */; };
 /* End PBXBuildFile section */
@@ -63,9 +66,12 @@
 		8D6475502991C44D00B74EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D64755B2991C98C00B74EAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D6475612991D48400B74EAF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		8D87566D299A6E72005A390A /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		8D87566F299A740C005A390A /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
-		8D875671299A7658005A390A /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		8DC97AA8299A922D000C0154 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		8DC97AAA299A942D000C0154 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		8DC97AAC299AD51A000C0154 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
+		8DC97AAE299AD522000C0154 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		8DC97AB1299AD760000C0154 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
+		8DC97AB3299AE0A3000C0154 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 		8DF1192C29959296001CF74E /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		8DF1192E299592A1001CF74E /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +141,6 @@
 			children = (
 				8D2CB2AC29928748009CA52E /* RegisterViewController.swift */,
 				8D2CB2AA2992873C009CA52E /* RegisterView.swift */,
-				8D87566F299A740C005A390A /* RegisterPresenter.swift */,
 			);
 			name = Register;
 			sourceTree = "<group>";
@@ -145,7 +150,6 @@
 			children = (
 				8D2CB2B1299289F3009CA52E /* HomeViewController.swift */,
 				8D2CB2AF299289EA009CA52E /* HomeView.swift */,
-				8D875671299A7658005A390A /* HomePresenter.swift */,
 				8D2CB2B72992EB9C009CA52E /* Cell */,
 				8DF1192B2995925A001CF74E /* PersonDetail */,
 			);
@@ -188,6 +192,8 @@
 				8D2CB29D2992853B009CA52E /* Models */,
 				8D2CB29A299277C5009CA52E /* Extensions */,
 				8D2CB2A02992855E009CA52E /* Core */,
+				8DC97AA7299A9212000C0154 /* Coordinator */,
+				8DC97AB0299AD73D000C0154 /* ViewModel */,
 			);
 			path = ArchitecturesUIKit;
 			sourceTree = "<group>";
@@ -208,9 +214,28 @@
 			children = (
 				8D6475462991C44B00B74EAF /* LoginViewController.swift */,
 				8D6475612991D48400B74EAF /* LoginView.swift */,
-				8D87566D299A6E72005A390A /* LoginPresenter.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		8DC97AA7299A9212000C0154 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97AA8299A922D000C0154 /* Coordinator.swift */,
+				8DC97AAA299A942D000C0154 /* LoginCoordinator.swift */,
+				8DC97AAC299AD51A000C0154 /* RegisterCoordinator.swift */,
+				8DC97AAE299AD522000C0154 /* HomeCoordinator.swift */,
+			);
+			name = Coordinator;
+			sourceTree = "<group>";
+		};
+		8DC97AB0299AD73D000C0154 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97AB1299AD760000C0154 /* CredentialsViewModel.swift */,
+				8DC97AB3299AE0A3000C0154 /* PersonViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		8DF1192B2995925A001CF74E /* PersonDetail */ = {
@@ -304,26 +329,29 @@
 				8D6475472991C44B00B74EAF /* LoginViewController.swift in Sources */,
 				8D2CB2AD29928748009CA52E /* RegisterViewController.swift in Sources */,
 				8D2CB2AB2992873C009CA52E /* RegisterView.swift in Sources */,
-				8D87566E299A6E72005A390A /* LoginPresenter.swift in Sources */,
+				8DC97AAB299A942D000C0154 /* LoginCoordinator.swift in Sources */,
+				8DC97AAF299AD522000C0154 /* HomeCoordinator.swift in Sources */,
 				8D2CB2C12992F3D9009CA52E /* ImageService.swift in Sources */,
 				8D2CB2A429928601009CA52E /* CredentialService.swift in Sources */,
 				8DF1192F299592A1001CF74E /* PersonView.swift in Sources */,
 				8D2CB2BF2992F1C9009CA52E /* Person.swift in Sources */,
 				8D2CB2A62992861B009CA52E /* Credentials.swift in Sources */,
 				8D2CB2A829928669009CA52E /* AppState.swift in Sources */,
+				8DC97AB2299AD760000C0154 /* CredentialsViewModel.swift in Sources */,
 				8D2CB29C299277D9009CA52E /* UITextField+.swift in Sources */,
 				8D6475432991C44B00B74EAF /* AppDelegate.swift in Sources */,
 				8D6475622991D48400B74EAF /* LoginView.swift in Sources */,
 				8D2CB2B0299289EA009CA52E /* HomeView.swift in Sources */,
-				8D875672299A7658005A390A /* HomePresenter.swift in Sources */,
 				8D2CB2C32992FB30009CA52E /* PersonService.swift in Sources */,
 				8D2CB2B62992DD0A009CA52E /* UserDefaultsManager.swift in Sources */,
-				8D875670299A740C005A390A /* RegisterPresenter.swift in Sources */,
+				8DC97AAD299AD51A000C0154 /* RegisterCoordinator.swift in Sources */,
 				8DF1192D29959296001CF74E /* PersonViewController.swift in Sources */,
 				8D6475452991C44B00B74EAF /* SceneDelegate.swift in Sources */,
 				8D2CB2B2299289F3009CA52E /* HomeViewController.swift in Sources */,
+				8DC97AA9299A922D000C0154 /* Coordinator.swift in Sources */,
 				8D2CB2B92992EBB4009CA52E /* HomeTableViewCell.swift in Sources */,
 				8D2CB2A2299285A9009CA52E /* LocalFileManager.swift in Sources */,
+				8DC97AB4299AE0A3000C0154 /* PersonViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

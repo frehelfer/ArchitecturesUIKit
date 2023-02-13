@@ -11,34 +11,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    var homeViewController = HomeViewController()
-    var loginViewController = LoginViewController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
       
-        homeViewController.delegate = self
-        loginViewController.delegate = self
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
+        self.window?.makeKeyAndVisible()
         
-        if AppState.shared.isAuthorized {
-            setRootViewController(homeViewController)
-        } else {
-            setRootViewController(loginViewController)
-        }
+        let navigationController = UINavigationController()
+        self.window?.rootViewController = navigationController
+        
+//        var homeViewController = HomeViewController
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        loginCoordinator.start()
+        
+//        homeViewController.delegate = self
+//        loginViewController.delegate = self
+        
+//        if AppState.shared.isAuthorized {
+//            setRootViewController(loginCoordinator)
+//            loginCoordinator.start()
+//        } else {
+//            setRootViewController(loginViewController)
+//        }
     }
 }
 
 extension SceneDelegate {
-    func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
+    func setRootViewController(_ navController: UINavigationController, animated: Bool = true) {
         guard
             animated,
             let window = self.window
         else { return }
         
-        window.rootViewController = UINavigationController(rootViewController: vc)
+        window.rootViewController = UINavigationController(rootViewController: navController)
         window.makeKeyAndVisible()
         UIView.transition(with: window,
                           duration: 0.3,
@@ -47,20 +55,20 @@ extension SceneDelegate {
                           completion: nil)
     }
 }
-
-extension SceneDelegate: LoginViewControllerDelegate {
-    func isAuth() {
-        AppState.shared.updateAuthorization(with: true)
-        setRootViewController(homeViewController)
-    }
-}
-
-extension SceneDelegate: HomeViewControllerDelegate {
-    func logOut() {
-        AppState.shared.updateAuthorization(with: false)
-        setRootViewController(loginViewController)
-    }
-}
-
+//
+//extension SceneDelegate: LoginViewControllerDelegate {
+//    func isAuth() {
+//        AppState.shared.updateAuthorization(with: true)
+//        setRootViewController(homeViewController)
+//    }
+//}
+//
+//extension SceneDelegate: HomeViewControllerDelegate {
+//    func logOut() {
+//        AppState.shared.updateAuthorization(with: false)
+//        setRootViewController(loginViewController)
+//    }
+//}
+//
 
 

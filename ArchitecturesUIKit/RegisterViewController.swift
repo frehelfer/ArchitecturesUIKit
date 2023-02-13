@@ -9,25 +9,23 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
-    let presenter = RegisterPresenter()
+    private let vm = CredentialsViewModel()
 
     // MARK: - Closures
-    
-    var registerTap: (() -> Void)?
+    var onRegisterSuccess: (() -> Void)?
     
     // MARK: - Properties
-        
     private lazy var registerView: RegisterView = {
         let view = RegisterView()
         
         view.onRegisterTap = { [weak self] user in
-            self?.presenter.register(user: user)
+            self?.register(user: user)
         }
         
         return view
     }()
     
-    // MARK: - Init
+    // MARK: - LifeCycle
     override func loadView() {
         super.loadView()
         view = registerView
@@ -36,21 +34,19 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        
-        presenter.delegate = self
-    }
-}
-
-extension RegisterViewController: RegisterPresenterDelegate {
-    func showMessage(title: String, message: String) {
-        presentAlert(withTitle: title, message: message)
     }
     
-    func cleanTextFields(_ success: Bool) {
-        registerView.cleanTextFields(success)
-    }
-    
-    func goHome() {
-        registerTap?()
+    // MARK: - Actions
+    private func register(user: Credentials) {
+        vm.register(user: user) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.onRegisterSuccess?()
+                self?.registerView.cleanTextFields(true)
+            case .failure(let error):
+                self?.presentAlert(withTitle: "Error", message: error.localizedDescription)
+                self?.registerView.cleanTextFields(false)
+            }
+        }
     }
 }

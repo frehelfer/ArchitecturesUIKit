@@ -8,24 +8,19 @@
 import UIKit
 import SwiftUI
 
-protocol HomeViewControllerDelegate: AnyObject {
-    func logOut()
-}
 
 class HomeViewController: UIViewController {
     
-    let presenter = HomePresenter()
-    
-    weak var delegate: HomeViewControllerDelegate?
+    // MARK: - Closures
+    var logOut: (() -> Void)?
     
     // MARK: - Properties
-    
+    private let vm = PersonViewModel()
     private var allPersons: [Person] = []
+    
     private var homeView = HomeView()
-
     
     // MARK: - LifeCycle
-    
     override func loadView() {
         super.loadView()
         view = homeView
@@ -36,10 +31,14 @@ class HomeViewController: UIViewController {
         layout()
         self.hideKeyboardWhenTappedAround()
         self.homeView.configTableViewDelegate(delegate: self, dataSource: self)
-        self.presenter.delegate = self
         
         Task {
-            await presenter.fetchPersons()
+            do {
+                self.allPersons = try await vm.fetchPersons()
+                homeView.reloadTableView()
+            } catch {
+                presentAlert(withTitle: "Error", message: error.localizedDescription)
+            }
         }
     }
     
@@ -49,17 +48,21 @@ class HomeViewController: UIViewController {
     }
     
     private func layout() {
-        title = "HomeView"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(logOutTapped))
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        self.title = "HomeView"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(logOutTapped))
         
     }
     
+    // MARK: - Actions
     @objc
     func logOutTapped() {
-        delegate?.logOut()
+        self.logOut?()
     }
 }
 
+// MARK: - TableView Delegate
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allPersons.count
@@ -76,25 +79,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.didTap(person: indexPath)
-    }
-}
-
-extension HomeViewController: HomePresenterDelegate {
-    func presentPersons(allPersons: [Person]) {
-        self.allPersons = allPersons
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.homeView.reloadTableView()
-        }
-    }
-    
-    func showMessage(title: String, message: String) {
-        presentAlert(withTitle: title, message: message)
-    }
-    
-    func presentPersonDetail(person: IndexPath) {
-        let vc = PersonViewController(person: allPersons[person.row])
+        let vc = PersonViewController(person: allPersons[indexPath.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
