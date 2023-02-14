@@ -19,23 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
         
-        let navigationController = UINavigationController()
-        self.window?.rootViewController = navigationController
-        
-//        var homeViewController = HomeViewController
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-        loginCoordinator.start()
-        
-//        homeViewController.delegate = self
-//        loginViewController.delegate = self
-        
-//        if AppState.shared.isAuthorized {
-//            setRootViewController(loginCoordinator)
-//            loginCoordinator.start()
-//        } else {
-//            setRootViewController(loginViewController)
-//        }
     }
 }
 
