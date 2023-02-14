@@ -5,7 +5,7 @@ In addition to this repository, there is another repository that contains the sa
 
 ## Introduction
 
-This project is a comparison of different software architectural patterns, specifically Model-View-Controller (MVC), Model-View-Presenter (MVP), Model-View-ViewModel-Coordinator (MVVM-C) and View-Interactor-Presenter-Entity (VIP). The project is a simple iOS app that implements a login view and a tableview that displays data fetched from an API.
+This project is a comparison of different software architectural patterns, specifically Model-View-Controller (MVC), Model-View-Presenter (MVP), Model-View-ViewModel-Coordinator (MVVM-C) and View-Interactor-Presenter-Entity (VIP). The project is a simple iOS app that implements a login view, a register view and a tableview that displays data fetched from an API.
 
 The goal of this project is to demonstrate the differences and benefits of each architecture pattern and how they can be applied to an app. The project is implemented in different branches on Github, each branch representing a different architecture pattern.
 
